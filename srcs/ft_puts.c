@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:35:23 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/22 13:20:04 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/23 18:34:24 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,10 @@ void	ft_put_walls(t_window *win)
 	int		b[4];
 
 	img = mlx_xpm_file_to_image(win->mlx, "lib/sprites/fence.xpm", &x, &y);
-	b[0] = 0;	// UP
-	b[2] = 10;	// DOWN
-	b[3] = 0;	// LEFT
-	b[1] = 10;	// RIGHT
-	b[0]++;
-	b[2]++;
+	b[0] = 0;
+	b[2] = (win->height - 1) / 16;
+	b[3] = 0;
+	b[1] = (win->width - 1) / 16;
 	y = b[0];
 	while (y <= b[2])
 	{
@@ -78,7 +76,7 @@ void	ft_put_walls(t_window *win)
 			if (((x == b[3] || x == b[1]) && b[0] <= y && y <= b[2])
 				|| ((y == b[0] || y == b[2]) && b[1] >= x && x >= b[3]))
 				mlx_put_image_to_window(win->mlx, win->win, img,
-					x * 16 - 6, y * 16 - 6);
+					x * 16 - 7, y * 16 - 6);
 			x++;
 		}
 		y++;
@@ -89,26 +87,15 @@ void	ft_move(char facing, t_window *window)
 {
 	int	speed;
 
-	speed = 16;
+	speed = 10;
 	if (facing == 'N')
-	{
 		window->player.y -= speed;
-		window->player.sprites.facing = 'N';
-	}
 	else if (facing == 'S')
-	{
 		window->player.y += speed;
-		window->player.sprites.facing = 'S';
-	}
 	else if (facing == 'E')
-	{
 		window->player.x += speed;
-		window->player.sprites.facing = 'E';
-	}
 	else if (facing == 'W')
-	{
 		window->player.x -= speed;
-		window->player.sprites.facing = 'W';
-	}
+	window->player.sprites.facing = facing;
 	ft_put_player(window);
 }
