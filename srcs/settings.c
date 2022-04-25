@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 18:57:43 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/25 19:41:40 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	settings(t_window *window)
 {
 	window->settings.max_lives = 5;
+	window->settings.live_regain = 1;
 	window->settings.window_title = "So Long";
 	window->settings.floor = "lib/sprites/wooden.xpm";
 	window->settings.wall = "lib/sprites/fence.xpm";

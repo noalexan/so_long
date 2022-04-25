@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:52:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 19:01:20 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/25 19:33:11 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ void	init_player(t_window *window)
 			- 64) / 2;
 	window->player.y = (window->game.maps[window->game.current_level].heigth
 			- 64) / 2 + 16;
+	if (window->player.x % 16 == 8)
+		window->player.x -= 8;
+	if (window->player.y % 16 == 8)
+		window->player.y -= 8;
 	window->player.sprites.north = mlx_xpm_file_to_image(window->mlx,
 			window->settings.player[0], &window->player.width,
 			&window->player.height);
@@ -71,7 +75,7 @@ void	init_game(t_window *window)
 {
 	window->game.current_level++;
 	if (window->player.lives < window->settings.max_lives)
-		window->player.lives += 5;
+		window->player.lives += window->settings.live_regain;
 	if (window->game.current_level >= window->game.level)
 		exit(EXIT_SUCCESS);
 	window->win = mlx_new_window(window->mlx,

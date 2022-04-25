@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 18:55:10 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/25 19:30:50 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_sprites
 typedef struct s_settings
 {
 	int		max_lives;
+	int		live_regain;
 	char	*window_title;
 	char	*floor;
 	char	*wall;
