@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/22 17:51:30 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/25 08:55:39 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,21 +52,29 @@ SRCS	:=	srcs/libft/ft_atoi.c \
 
 OBJS	:= $(SRCS:.c=.o)
 
+GREEN	:= "\033[0;32m"
+CYAN	:= "\033[0;36m"
+RESET	:= "\033[0m"
+
 RM		:= rm -rf
 AR		:= ar rcs
 
 .c.o:
+	@echo $(GREEN)"[Compiling libft... <$<> ]"$(RESET)
 	@$(CC) $(CFLAGS) -c $< -o $(subst srcs, objs, $(<:.c=.o)) -I.
 
 $(NAME): $(OBJS)
+	@echo $(GREEN)"[Compiling libft.a...]"$(RESET)
 	@$(AR) $(NAME) $(subst srcs, objs, $(OBJS))
 
 all: $(NAME)
 
 clean:
+	@echo $(CYAN)"[Erasing libft...]"$(RESET)
 	@$(RM) $(subst srcs, objs, $(OBJS))
 
 fclean: clean
+	@echo $(CYAN)"[Erasing $(NAME)...]"$(RESET)
 	@$(RM) $(NAME)
 
 re: fclean all

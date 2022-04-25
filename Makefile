@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/23 17:08:00 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/23 18:56:50 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,7 @@ RESET	:= "\033[0m"
 	@$(CC) -c $< -o $(subst srcs, objs, $(<:.c=.o))
 
 $(NAME): $(OBJS)
-	@echo $(GREEN)"[Compiling libft...]"$(RESET)
 	@make -f srcs/libft/Makefile
-	@echo $(GREEN)"[Compiling printf...]"$(RESET)
 	@make -f srcs/printf/Makefile
 	@echo $(GREEN)"[Compiling binary file...]"$(RESET)
 	@$(CC) $(CFLAGS) $(subst srcs, objs, $(OBJS)) $(LIBS) -o $(NAME)
@@ -49,9 +47,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 test_parser: fclean $(OBJS)
-	@echo $(GREEN)"[Compiling libft...]"$(RESET)
 	@make -f srcs/libft/Makefile
-	@echo $(GREEN)"[Compiling printf...]"$(RESET)
 	@make -f srcs/printf/Makefile
 	@echo $(GREEN)"[Compiling parse test binary file...]"$(RESET)
 	@$(CC) $(CFLAGS) $(subst objs/main.o, test/test_parser.c, $(subst srcs, objs, $(OBJS))) $(LIBS) -o $(NAME)
@@ -59,9 +55,7 @@ test_parser: fclean $(OBJS)
 clean:
 	@echo $(CYAN)"[Erasing objects...]"$(RESET)
 	@$(RM) $(subst srcs, objs, $(OBJS))
-	@echo $(CYAN)"[Erasing libft...]"$(RESET)
 	@make -f srcs/libft/Makefile fclean
-	@echo $(CYAN)"[Erasing printf...]"$(RESET)
 	@make -f srcs/printf/Makefile fclean
 
 fclean: clean
