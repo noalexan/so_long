@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/23 14:10:31 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:55:10 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ typedef struct s_sprites
 	char	facing;
 }			t_sprites;
 
+typedef struct s_settings
+{
+	int		max_lives;
+	char	*window_title;
+	char	*floor;
+	char	*wall;
+	char	*player[4];
+	char	*health[2];
+}			t_settings;
+
 typedef struct s_player
 {
 	int			x;
@@ -29,6 +39,7 @@ typedef struct s_player
 	int			width;
 	int			height;
 	int			lives;
+	int			speed;
 	t_sprites	sprites;
 }			t_player;
 
@@ -38,19 +49,26 @@ typedef struct s_ennemies
 	int	y;
 }			t_ennemies;
 
+typedef struct s_map
+{
+	char	*level_name;
+	int		width;
+	int		heigth;
+	char	**board;
+}			t_map;
+
 typedef struct s_game
 {
 	int		level;
 	int		current_level;
-	char	***board;
+	t_map	*maps;
 }			t_game;
 
 typedef struct s_window
 {
 	void		*mlx;
 	void		*win;
-	int			width;
-	int			height;
+	t_settings	settings;
 	t_player	player;
 	t_game		game;
 }			t_window;

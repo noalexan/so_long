@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:35:23 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/23 18:34:24 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:48:50 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,34 @@ void	ft_put_player(t_window *window)
 			window->player.x, window->player.y);
 }
 
+void	ft_put_health(t_window *window)
+{
+	void	*lost_health;
+	void	*red_health;
+	int		w;
+	int		h;
+	int		i;
+
+	i = 0;
+	lost_health = mlx_xpm_file_to_image(window->mlx,
+			window->settings.health[0], &w, &h);
+	red_health = mlx_xpm_file_to_image(window->mlx,
+			window->settings.health[1], &w, &h);
+	while (++i <= window->settings.max_lives)
+	{
+		if (window->player.lives >= i)
+			mlx_put_image_to_window(window->mlx, window->win, red_health,
+				window->game.maps[window->game.current_level].width - 16 * i,
+				2);
+		else
+			mlx_put_image_to_window(window->mlx, window->win, lost_health,
+				window->game.maps[window->game.current_level].width - 16 * i,
+				2);
+	}
+	if (window->player.lives < 1)
+		game_over(window);
+}
+
 void	ft_fill_floor(t_window *window)
 {
 	void	*image;
@@ -40,13 +68,13 @@ void	ft_fill_floor(t_window *window)
 	int		w;
 	int		h;
 
-	image = mlx_xpm_file_to_image(window->mlx, "lib/sprites/wooden.xpm",
+	image = mlx_xpm_file_to_image(window->mlx, window->settings.floor,
 			&w, &h);
 	x = 0;
-	while (x <= 624)
+	while (x <= window->game.maps[window->game.current_level].width)
 	{
 		y = 0;
-		while (y <= 460)
+		while (y <= window->game.maps[window->game.current_level].heigth)
 		{
 			mlx_put_image_to_window(window->mlx, window->win, image, x, y);
 			y += 16;
@@ -62,11 +90,11 @@ void	ft_put_walls(t_window *win)
 	int		y;
 	int		b[4];
 
-	img = mlx_xpm_file_to_image(win->mlx, "lib/sprites/fence.xpm", &x, &y);
-	b[0] = 0;
-	b[2] = (win->height - 1) / 16;
+	img = mlx_xpm_file_to_image(win->mlx, win->settings.wall, &x, &y);
+	b[0] = 1;
+	b[2] = win->game.maps[win->game.current_level].heigth / 16;
 	b[3] = 0;
-	b[1] = (win->width - 1) / 16;
+	b[1] = (win->game.maps[win->game.current_level].width - 1) / 16;
 	y = b[0];
 	while (y <= b[2])
 	{
@@ -85,17 +113,17 @@ void	ft_put_walls(t_window *win)
 
 void	ft_move(char facing, t_window *window)
 {
-	int	speed;
-
-	speed = 10;
-	if (facing == 'N')
-		window->player.y -= speed;
-	else if (facing == 'S')
-		window->player.y += speed;
-	else if (facing == 'E')
-		window->player.x += speed;
-	else if (facing == 'W')
-		window->player.x -= speed;
 	window->player.sprites.facing = facing;
-	ft_put_player(window);
+	window->player.lives--;
+	if (!its_a_wall(window))
+	{
+		if (facing == 'N')
+			window->player.y -= window->player.speed;
+		else if (facing == 'S')
+			window->player.y += window->player.speed;
+		else if (facing == 'E')
+			window->player.x += window->player.speed;
+		else if (facing == 'W')
+			window->player.x -= window->player.speed;
+	}
 }

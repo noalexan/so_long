@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 15:28:15 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 19:00:49 by noalexan         ###   ########.fr       */
+/*   Created: 2022/04/25 13:10:01 by noalexan          #+#    #+#             */
+/*   Updated: 2022/04/25 13:10:09 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
-
-int	main(int argc, char **argv)
+int	ft_strcmp(char *s1, char *s2)
 {
-	t_window	window;
+	int	i;
+	int	ascii1;
+	int	ascii2;
 
-	settings(&window);
-	init_map(&window, argv + 1);
-	window.player.lives = window.settings.max_lives;
-	window.mlx = mlx_init();
-	init_game(&window);
-	mlx_loop(window.mlx);
+	ascii1 = 0;
+	ascii2 = 0;
+	i = 0;
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	if (s1[i] != s2[i])
+		return (s1[i] - s2[i]);
 	return (0);
 }

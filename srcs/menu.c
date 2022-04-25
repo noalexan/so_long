@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 15:28:15 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 19:00:49 by noalexan         ###   ########.fr       */
+/*   Created: 2022/04/25 14:48:12 by noalexan          #+#    #+#             */
+/*   Updated: 2022/04/25 18:23:56 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	main(int argc, char **argv)
+void	game_over(t_window *window)
 {
-	t_window	window;
-
-	settings(&window);
-	init_map(&window, argv + 1);
-	window.player.lives = window.settings.max_lives;
-	window.mlx = mlx_init();
-	init_game(&window);
-	mlx_loop(window.mlx);
-	return (0);
+	mlx_destroy_window(window->mlx, window->win);
+	init_game(window);
 }

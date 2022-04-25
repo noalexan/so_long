@@ -6,17 +6,17 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/25 08:56:13 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/25 10:17:40 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		:= gcc
 CFLAGS	:= -Werror -Wextra -Wall
 
-NAME	:= objs/printf/printf.a
+NAME	:= printf.a
 
-SRCS	:=	srcs/printf/ft_printf.c \
-			srcs/printf/ft_printf_utils.c \
+SRCS	:=	ft_printf.c \
+			ft_printf_utils.c \
 
 OBJS	:= $(SRCS:.c=.o)
 
@@ -29,17 +29,17 @@ AR		:= ar rcs
 
 .c.o:
 	@echo $(GREEN)"[Compiling printf... <$<> ]"$(RESET)
-	@$(CC) $(CFLAGS) -c $< -o $(subst srcs, objs, $(<:.c=.o)) -I.
+	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I.
 
 $(NAME): $(OBJS)
-	@echo $(GREEN)"[Compiling printf.a...]"$(RESET)
-	@$(AR) $(NAME) $(subst srcs, objs, $(OBJS))
+	@echo $(CYAN)"[Compiling '$(NAME)'...]"$(RESET)
+	@$(AR) $(NAME) $(OBJS)
 
 all: $(NAME)
 
 clean:
 	@echo $(CYAN)"[Erasing printf...]"$(RESET)
-	@$(RM) $(subst srcs, objs, $(OBJS))
+	@$(RM) $(OBJS)
 
 fclean: clean
 	@echo $(CYAN)"[Erasing $(NAME)...]"$(RESET)

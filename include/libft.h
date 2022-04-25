@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 10:04:44 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/04 12:16:55 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/25 13:10:28 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		ft_toupper(int character);
 int		ft_tolower(int character);
 char	*ft_strchr(const char *string, int searchedChar);
 char	*ft_strrchr(const char *string, int searchedChar);
+int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *first, const char *second, size_t length);
 char	*ft_strnstr(const char	*big, const char *little, size_t length);
 int		ft_atoi(const char *nptr);
