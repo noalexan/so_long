@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:06:58 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 13:26:09 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:13:35 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,11 @@ int	calc_size_of_line(int fd)
 
 void	parse_map(t_window *window, char *level_name, int level_num)
 {
-	int	fd;
-	int	size;
-	int	size_l;
-	int	i;
+	int		fd;
+	int		size;
+	int		size_l;
+	int		i;
+	char	*line;
 
 	i = -1;
 	fd = open(level_name, O_RDONLY);
@@ -76,8 +77,10 @@ void	parse_map(t_window *window, char *level_name, int level_num)
 	window->game.maps[level_num].board = ft_calloc(size, sizeof(char *));
 	while (++i < size)
 	{
+		line = get_next_line(fd);
 		window->game.maps[level_num].board[i] = ft_calloc(size_l, sizeof(char));
-		window->game.maps[level_num].board[i] = get_next_line(fd);
+		window->game.maps[level_num].board[i] = line;
+		free(line);
 	}
 	close(fd);
 }

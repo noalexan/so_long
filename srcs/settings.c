@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 14:49:13 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/26 16:37:39 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,14 @@ void	settings(t_window *window)
 			"lib/sprites/lives/red_health.xpm");
 }
 
-void	echo(char *name, char *arg)
-{
-	system(ft_strjoin("echo ", ft_strjoin(name, arg)));
-}
-
 void	stats(t_window *window)
 {
 	system("clear");
-	echo("========== STATS ==========", "");
-	echo("Map        : ",
+	ft_printf("========== STATS ==========\n");
+	ft_printf("Map        : %s\n",
 		window->game.maps[window->game.current_level].level_name);
-	echo("Level      : ", ft_itoa(window->game.current_level + 1));
-	echo("", "");
-	echo("Lives      : ", ft_itoa(window->player.lives));
-	echo("Position X : ", ft_itoa(window->player.x));
-	echo("Position Y : ", ft_itoa(window->player.y));
+	ft_printf("Level      : %d\n", window->game.current_level + 1);
+	ft_printf("Lives      : %d\n", window->player.lives);
+	ft_printf("Position X : %d\n", window->player.x);
+	ft_printf("Position Y : %d\n", window->player.y);
 }

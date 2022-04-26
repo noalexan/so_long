@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:52:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 16:06:07 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:06:59 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_key_event(int key, t_window *window)
 	ft_put_player(window);
 	mlx_string_put(window->mlx, window->win, 2, -2,
 		mlx_get_color_value(window->mlx, window->settings.level_title_color),
-		ft_strjoin("Level ", ft_itoa(window->game.current_level + 1)));
+		"Level");
 	ft_put_health(window);
 	stats(window);
 	return (0);
@@ -83,7 +83,7 @@ void	init_game(t_window *window)
 	init_player(window);
 	mlx_string_put(window->mlx, window->win, 2, -2,
 		mlx_get_color_value(window->mlx, window->settings.level_title_color),
-		ft_strjoin("Level ᖫ ", ft_itoa(window->game.current_level + 1)));
+		"Level");
 	ft_put_health(window);
 	mlx_hook(window->win, 2, 1L << 2, ft_key_event, window);
 	mlx_hook(window->win, 17, 1L << 2, ft_destroy_win, window);

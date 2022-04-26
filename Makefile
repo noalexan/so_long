@@ -6,12 +6,12 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/26 10:26:22 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/26 16:52:14 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		:= gcc
-OFLAGS	:= -Werror -Wextra -Wall
+OFLAGS	:= -Werror -Wextra -Wall -g
 CFLAGS	:= -I /usr/X11/include -l mlx -framework OpenGL -framework AppKit -g
 
 NAME	:= so_long

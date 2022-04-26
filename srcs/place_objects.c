@@ -6,11 +6,15 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:18:08 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 14:24:41 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/26 16:29:56 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+// int	door_opener(t_window window)
+// {
+// }
 
 void	place_objects(t_window *window)
 {
