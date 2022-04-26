@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:35:23 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 19:28:31 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/26 14:13:44 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_fill_floor(t_window *window)
 	while (x <= window->game.maps[window->game.current_level].width)
 	{
 		y = 0;
-		while (y <= window->game.maps[window->game.current_level].heigth)
+		while (y - 16 <= window->game.maps[window->game.current_level].heigth)
 		{
 			mlx_put_image_to_window(window->mlx, window->win, image, x, y);
 			y += 16;
@@ -83,47 +83,29 @@ void	ft_fill_floor(t_window *window)
 	}
 }
 
-void	ft_put_walls(t_window *win)
+void	ft_put_walls(t_window *win, int x, int y)
 {
 	void	*img;
-	int		x;
-	int		y;
-	int		b[4];
+	int		w;
+	int		h;
 
-	img = mlx_xpm_file_to_image(win->mlx, win->settings.wall, &x, &y);
-	b[0] = 1;
-	b[2] = win->game.maps[win->game.current_level].heigth / 16;
-	b[3] = 0;
-	b[1] = (win->game.maps[win->game.current_level].width - 1) / 16;
-	y = b[0];
-	while (y <= b[2])
-	{
-		x = b[3];
-		while (x <= b[1])
-		{
-			if (((x == b[3] || x == b[1]) && b[0] <= y && y <= b[2])
-				|| ((y == b[0] || y == b[2]) && b[1] >= x && x >= b[3]))
-				mlx_put_image_to_window(win->mlx, win->win, img,
-					x * 16 - 7, y * 16 - 6);
-			x++;
-		}
-		y++;
-	}
+	img = mlx_xpm_file_to_image(win->mlx, win->settings.wall, &w, &h);
+	mlx_put_image_to_window(win->mlx, win->win, img,
+		x - 7, y + 10);
 }
 
 void	ft_move(char facing, t_window *window)
 {
 	window->player.sprites.facing = facing;
-	window->player.lives--;
 	if (!its_a_wall(window))
 	{
 		if (facing == 'N')
-			window->player.y -= window->player.speed;
+			window->player.y -= window->settings.speed;
 		else if (facing == 'S')
-			window->player.y += window->player.speed;
+			window->player.y += window->settings.speed;
 		else if (facing == 'E')
-			window->player.x += window->player.speed;
+			window->player.x += window->settings.speed;
 		else if (facing == 'W')
-			window->player.x -= window->player.speed;
+			window->player.x -= window->settings.speed;
 	}
 }

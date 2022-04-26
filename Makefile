@@ -6,12 +6,13 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/25 18:50:47 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/26 10:26:22 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		:= gcc
-CFLAGS	:= -Werror -Wextra -Wall -I /usr/X11/include -l mlx -framework OpenGL -framework AppKit
+OFLAGS	:= -Werror -Wextra -Wall
+CFLAGS	:= -I /usr/X11/include -l mlx -framework OpenGL -framework AppKit -g
 
 NAME	:= so_long
 
@@ -36,11 +37,12 @@ AR		:= ar rcs
 
 GREEN	:= "\033[0;32m"
 CYAN	:= "\033[0;36m"
+YELLOW	:= "\033[0;33m"
 RESET	:= "\033[0m"
 
 .c.o: $(SRCS)
-	@echo $(GREEN)"[Compiling objects... <$<> ]"$(RESET)
-	@$(CC) -c $< -o $(<:.c=.o)
+	@echo $(GREEN)"[Compiling objects... "$(YELLOW)"<$<>"$(GREEN)" ]"$(RESET)
+	@$(CC) $(OFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
 	@make -C srcs/libft

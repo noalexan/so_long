@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 15:28:15 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 10:17:49 by noalexan         ###   ########.fr       */
+/*   Created: 2022/04/26 13:38:42 by noalexan          #+#    #+#             */
+/*   Updated: 2022/04/26 13:38:47 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
-
-int	main(int argc, char **argv)
+void	ft_foreach(char **tab, void function(char **))
 {
-	t_window	window;
+	int	i;
 
-	(void) argc;
-	settings(&window);
-	init_map(&window, argv + 1);
-	window.player.lives = window.settings.max_lives;
-	window.mlx = mlx_init();
-	init_game(&window);
-	mlx_loop(window.mlx);
-	return (0);
+	i = -1;
+	while (tab[++i])
+		function(&tab[i]);
 }

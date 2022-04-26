@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:52:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 19:33:11 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/26 16:06:07 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	ft_key_event(int key, t_window *window)
 {
 	if (key == 53)
 		ft_destroy_win(window);
+	else if (key == 49)
+		window->player.lives--;
 	else if (key == 13 || key == 126)
 		ft_move('N', window);
 	else if (key == 0 || key == 123)
@@ -35,26 +37,20 @@ int	ft_key_event(int key, t_window *window)
 		return (0);
 	mlx_clear_window(window->mlx, window->win);
 	ft_fill_floor(window);
-	ft_put_walls(window);
+	place_objects(window);
 	ft_put_player(window);
 	mlx_string_put(window->mlx, window->win, 2, -2,
-		mlx_get_color_value(window->mlx, 0xFF1A2D),
+		mlx_get_color_value(window->mlx, window->settings.level_title_color),
 		ft_strjoin("Level ", ft_itoa(window->game.current_level + 1)));
 	ft_put_health(window);
+	stats(window);
 	return (0);
 }
 
 void	init_player(t_window *window)
 {
-	window->player.speed = 16;
-	window->player.x = (window->game.maps[window->game.current_level].width
-			- 64) / 2;
-	window->player.y = (window->game.maps[window->game.current_level].heigth
-			- 64) / 2 + 16;
-	if (window->player.x % 16 == 8)
-		window->player.x -= 8;
-	if (window->player.y % 16 == 8)
-		window->player.y -= 8;
+	window->player.x = 16;
+	window->player.y = 32;
 	window->player.sprites.north = mlx_xpm_file_to_image(window->mlx,
 			window->settings.player[0], &window->player.width,
 			&window->player.height);
@@ -83,12 +79,13 @@ void	init_game(t_window *window)
 			window->game.maps[window->game.current_level].heigth + 20,
 			window->settings.window_title);
 	ft_fill_floor(window);
-	ft_put_walls(window);
+	place_objects(window);
 	init_player(window);
+	mlx_string_put(window->mlx, window->win, 2, -2,
+		mlx_get_color_value(window->mlx, window->settings.level_title_color),
+		ft_strjoin("Level ᖫ ", ft_itoa(window->game.current_level + 1)));
 	ft_put_health(window);
 	mlx_hook(window->win, 2, 1L << 2, ft_key_event, window);
 	mlx_hook(window->win, 17, 1L << 2, ft_destroy_win, window);
-	mlx_string_put(window->mlx, window->win, 2, -2,
-		mlx_get_color_value(window->mlx, 0xFF1A2D),
-		ft_strjoin("Level ", ft_itoa(window->game.current_level + 1)));
+	stats(window);
 }

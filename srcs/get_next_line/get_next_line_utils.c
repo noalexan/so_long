@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:07:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 10:29:49 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/26 15:58:15 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	add_buffer(char **save, char *buffer)
 		*save = ft_substr_gnl("", 0, 0);
 	i = -1;
 	j = 0;
-	new = malloc((ft_strlen(*save) + ft_strlen(buffer) + 1) * sizeof(char));
+	new = ft_calloc((ft_strlen(*save) + ft_strlen(buffer) + 1), sizeof(char));
 	while ((*save)[++i])
 		new[i] = (*save)[i];
 	while (buffer[j])

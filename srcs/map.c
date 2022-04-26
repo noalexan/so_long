@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:06:58 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 18:55:56 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/26 13:26:09 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	parse_map(t_window *window, char *level_name, int level_num)
 
 	i = -1;
 	fd = open(level_name, O_RDONLY);
+	if (fd < 3)
+		err("impossible d'ouvrir la map '%s'.", level_name);
 	size = ft_count_line(open(level_name, O_RDONLY));
 	size_l = calc_size_of_line(open(level_name, O_RDONLY));
-	if (fd < 0)
-		err("impossible d'ouvrir la map '%s'.", level_name);
 	if (size_l < 3 || size < 3)
 		err("la map '%s' est invalide.", level_name);
 	if (ft_strcmp(".ber", level_name + (ft_strlen(level_name) - 4)) != 0)
@@ -95,5 +95,10 @@ void	init_map(t_window *window, char **levels)
 	window->game.maps = ft_calloc(size, sizeof(t_map));
 	i = -1;
 	while (levels[++i])
-		parse_map(window, levels[i], i);
+	{
+		if (!ft_strcmp(levels[i], "--nogui"))
+			window->settings.nogui = 1;
+		else
+			parse_map(window, levels[i], i);
+	}
 }

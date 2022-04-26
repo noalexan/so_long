@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:17:15 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 18:28:49 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/26 13:08:26 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,14 @@
 # include "ft_printf.h"
 # include "libft.h"
 
+# define RED_BLOCK_CONSOLE "\033[41m"
+# define RESET_CONSOLE_COLOR "\033[0m"
+
+# define RED 0xFF1A2D
+
 void	settings(t_window *window);
 void	init_game(t_window *window);
+void	stats(t_window *window);
 
 void	game_over(t_window *window);
 int		ft_destroy_win(t_window *window);
@@ -35,7 +41,8 @@ int		ft_destroy_win(t_window *window);
 void	ft_put_player(t_window *window);
 void	ft_put_health(t_window *window);
 void	ft_fill_floor(t_window *window);
-void	ft_put_walls(t_window *win);
+void	ft_put_walls(t_window *win, int x, int y);
+void	place_objects(t_window *window);
 void	ft_move(char facing, t_window *window);
 
 /* ################# UTILS ################ */

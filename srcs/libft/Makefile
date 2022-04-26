@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/25 13:10:45 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/26 13:42:08 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ NAME	:= libft.a
 
 SRCS	:=	ft_atoi.c \
 			ft_calloc.c \
+			ft_foreach.c \
 			ft_isalpha.c \
 			ft_isdigit.c \
 			ft_memchr.c \
@@ -55,13 +56,14 @@ OBJS	:= $(SRCS:.c=.o)
 
 GREEN	:= "\033[0;32m"
 CYAN	:= "\033[0;36m"
+YELLOW	:= "\033[0;33m"
 RESET	:= "\033[0m"
 
 RM		:= rm -rf
 AR		:= ar rcs
 
 .c.o:
-	@echo $(GREEN)"[Compiling libft... <$<> ]"$(RESET)
+	@echo $(GREEN)"[Compiling libft... "$(YELLOW)"<$<>"$(GREEN)" ]"$(RESET)
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I.
 
 $(NAME): $(OBJS)
