@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:06:58 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 17:13:35 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/27 14:55:39 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,19 @@ int	size_of_tab(void **tab)
 
 int	ft_count_line(int fd)
 {
-	int	nb;
+	int		nb;
+	char	*line;
 
 	nb = 0;
-	while (get_next_line(fd) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
 		nb++;
+		free(line);
+		line = get_next_line(fd);
+	}
 	close(fd);
+	free(line);
 	return (nb);
 }
 
@@ -47,8 +54,10 @@ int	calc_size_of_line(int fd)
 		size_l = ft_strlen(line);
 		if (old != size_l)
 			return (-1);
+		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	close(fd);
 	return (size_l);
 }
@@ -59,7 +68,6 @@ void	parse_map(t_window *window, char *level_name, int level_num)
 	int		size;
 	int		size_l;
 	int		i;
-	char	*line;
 
 	i = -1;
 	fd = open(level_name, O_RDONLY);
@@ -74,14 +82,9 @@ void	parse_map(t_window *window, char *level_name, int level_num)
 	window->game.maps[level_num].heigth = size * 16;
 	window->game.maps[level_num].width = size_l * 16;
 	window->game.maps[level_num].level_name = level_name;
-	window->game.maps[level_num].board = ft_calloc(size, sizeof(char *));
+	window->game.maps[level_num].board = ft_calloc(size + 1, sizeof(char *));
 	while (++i < size)
-	{
-		line = get_next_line(fd);
-		window->game.maps[level_num].board[i] = ft_calloc(size_l, sizeof(char));
-		window->game.maps[level_num].board[i] = line;
-		free(line);
-	}
+		window->game.maps[level_num].board[i] = get_next_line(fd);
 	close(fd);
 }
 
@@ -97,11 +100,12 @@ void	init_map(t_window *window, char **levels)
 	window->game.current_level = -1;
 	window->game.maps = ft_calloc(size, sizeof(t_map));
 	i = -1;
-	while (levels[++i])
+	if (!ft_strcmp(levels[size - 1], "--nogui"))
 	{
-		if (!ft_strcmp(levels[i], "--nogui"))
-			window->settings.nogui = 1;
-		else
-			parse_map(window, levels[i], i);
+		window->settings.nogui = 1;
+		size--;
 	}
+	while (++i < size)
+		parse_map(window, levels[i], i);
+	map_is_valid(window);
 }

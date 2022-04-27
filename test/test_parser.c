@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 16:15:16 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/25 12:58:44 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/27 13:45:24 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,19 @@ int	main(int argc, char **argv)
 	while (argc > ++i + 1)
 	{
 		j = -1;
-		ft_printf("map '%s':\t(%dx%d)\n",
+		ft_printf("map '%s':\t(%dx%d) line: %d\n",
 			window.game.maps[i].level_name,
 			window.game.maps[i].width,
-			window.game.maps[i].heigth);
+			window.game.maps[i].heigth,
+			window.game.maps[i].heigth / 16);
 		while (window.game.maps[i].board[++j])
+		{
 			ft_printf("%s\n", window.game.maps[i].board[j]);
+		}
 		ft_printf("\n");
 	}
+	system("leaks so_long");
+	while (1)
+		;
 	exit(EXIT_SUCCESS);
 }

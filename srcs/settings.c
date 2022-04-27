@@ -6,23 +6,16 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 16:37:39 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/27 10:58:26 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	settings(t_window *window)
+void	settings_string(t_window *window)
 {
-	window->settings.max_lives = 3;
-	window->settings.live_regain = 1;
-	window->settings.speed = 16;
-	window->settings.level_title_color = RED;
-	window->settings.gameover_title_color = RED;
-	window->settings.nogui = 0;
-	window->settings.window_title = "So Long";
 	window->settings.dir_path
-		= "/Users/noalexan/Desktop/42Projects/42Cursus/so_long/";
+		= "/Users/noalexan/Desktop/Projets42/42cursus/so_long/";
 	window->settings.floor = ft_strjoin(window->settings.dir_path,
 			"lib/sprites/wooden.xpm");
 	window->settings.wall = ft_strjoin(window->settings.dir_path,
@@ -39,12 +32,29 @@ void	settings(t_window *window)
 			"lib/sprites/lives/lost_health.xpm");
 	window->settings.health[1] = ft_strjoin(window->settings.dir_path,
 			"lib/sprites/lives/red_health.xpm");
+	window->settings.door[0] = ft_strjoin(window->settings.dir_path,
+			"lib/sprites/doors/close.xpm");
+	window->settings.door[1] = ft_strjoin(window->settings.dir_path,
+			"lib/sprites/doors/open.xpm");
+}
+
+void	settings(t_window *window)
+{
+	window->settings.max_lives = 3;
+	window->settings.live_regain = 1;
+	window->settings.speed = 16;
+	window->settings.level_title_color = RED;
+	window->settings.gameover_title_color = RED;
+	window->settings.success_title_color = GREEN;
+	window->settings.nogui = 0;
+	window->settings.window_title = "So Long";
+	settings_string(window);
 }
 
 void	stats(t_window *window)
 {
 	system("clear");
-	ft_printf("========== STATS ==========\n");
+	ft_printf("\e[31m============ STATS ============\e[0m\n");
 	ft_printf("Map        : %s\n",
 		window->game.maps[window->game.current_level].level_name);
 	ft_printf("Level      : %d\n", window->game.current_level + 1);

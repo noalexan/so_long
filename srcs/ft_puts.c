@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:35:23 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 14:13:44 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/27 11:10:35 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_put_health(t_window *window)
 				2);
 	}
 	if (window->player.lives < 1)
-		game_over(window);
+		end_of_level(window);
 }
 
 void	ft_fill_floor(t_window *window)
@@ -81,17 +81,6 @@ void	ft_fill_floor(t_window *window)
 		}
 		x += 16;
 	}
-}
-
-void	ft_put_walls(t_window *win, int x, int y)
-{
-	void	*img;
-	int		w;
-	int		h;
-
-	img = mlx_xpm_file_to_image(win->mlx, win->settings.wall, &w, &h);
-	mlx_put_image_to_window(win->mlx, win->win, img,
-		x - 7, y + 10);
 }
 
 void	ft_move(char facing, t_window *window)

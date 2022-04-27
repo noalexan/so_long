@@ -6,35 +6,58 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:18:08 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 16:29:56 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/27 09:10:38 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// int	door_opener(t_window window)
-// {
-// }
+void	door(t_window *win)
+{
+	void	*img;
+	int		x;
+	int		y;
+	int		w;
+	int		h;
+
+	if (!win->game.exit)
+		img = mlx_xpm_file_to_image(win->mlx, win->settings.door[1], &w, &h);
+	else
+		img = mlx_xpm_file_to_image(win->mlx, win->settings.door[0], &w, &h);
+	y = -1;
+	while (win->game.maps[win->game.current_level].board[++y])
+	{
+		x = -1;
+		while (win->game.maps[win->game.current_level].board[y][++x])
+			if (win->game.maps[win->game.current_level].board[y][x] == 'E')
+				mlx_put_image_to_window(win->mlx, win->win, img,
+					x * 16 + 1, y * 16 + 19);
+	}
+}
+
+void	put_walls(t_window *window)
+{
+	void	*img;
+	int		x;
+	int		y;
+	int		w;
+	int		h;
+
+	img = mlx_xpm_file_to_image(window->mlx, window->settings.wall, &w, &h);
+	y = -1;
+	while (window->game.maps[window->game.current_level].board[++y])
+	{
+		x = -1;
+		while (window->game.maps[window->game.current_level].board[y][++x])
+			if (window->game.maps[window->game.current_level]
+				.board[y][x] == '1')
+				mlx_put_image_to_window(window->mlx, window->win, img,
+					x * 16 - 7, y * 16 + 10);
+	}
+}
 
 void	place_objects(t_window *window)
 {
-	int		x;
-	int		y;
-	char	obj;
-
-	if (!window->settings.nogui)
-	{
-		y = -1;
-		while (window->game.maps[window->game.current_level].board[++y])
-		{
-			x = -1;
-			while (window->game.maps[window->game.current_level].board[y][++x])
-			{
-				obj = window->game
-					.maps[window->game.current_level].board[y][x];
-				if (obj == '1')
-					ft_put_walls(window, x * 16, y * 16);
-			}
-		}
-	}
+	put_walls(window);
+	door(window);
 }

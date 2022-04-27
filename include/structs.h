@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 14:08:33 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/27 10:57:53 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_settings
 	int		speed;
 	int		level_title_color;
 	int		gameover_title_color;
+	int		success_title_color;
 	int		nogui;
 	char	*dir_path;
 	char	*window_title;
@@ -36,6 +37,7 @@ typedef struct s_settings
 	char	*wall;
 	char	*player[4];
 	char	*health[2];
+	char	*door[2];
 }			t_settings;
 
 typedef struct s_player
@@ -64,6 +66,8 @@ typedef struct s_map
 	char	*level_name;
 	int		width;
 	int		heigth;
+	int		x_pos;
+	int		y_pos;
 	char	**board;
 }			t_map;
 
@@ -71,6 +75,7 @@ typedef struct s_game
 {
 	int		level;
 	int		current_level;
+	int		exit;
 	t_map	*maps;
 }			t_game;
 

@@ -6,13 +6,13 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/26 16:52:14 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/27 14:36:49 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		:= gcc
 OFLAGS	:= -Werror -Wextra -Wall -g
-CFLAGS	:= -I /usr/X11/include -l mlx -framework OpenGL -framework AppKit -g
+CFLAGS	:= -I /usr/X11/include -l mlx -framework OpenGL -framework AppKit
 
 NAME	:= so_long
 
@@ -42,7 +42,7 @@ RESET	:= "\033[0m"
 
 .c.o: $(SRCS)
 	@echo $(GREEN)"[Compiling objects... "$(YELLOW)"<$<>"$(GREEN)" ]"$(RESET)
-	@$(CC) $(OFLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) $(OFLAGS) -c $< -o $(<:.c=.o) -g
 
 $(NAME): $(OBJS)
 	@make -C srcs/libft
@@ -54,7 +54,7 @@ test_parser: fclean $(OBJS)
 	@make -C srcs/libft
 	@make -C srcs/printf
 	@echo $(CYAN)"[Compiling parse test binary file...]"$(RESET)
-	@$(CC) $(CFLAGS) $(subst srcs/main.o, test/test_parser.c, $(OBJS)) $(LIBS) -I include/ -o $(NAME)
+	@$(CC) $(CFLAGS) $(subst srcs/main.o, test/test_parser.c, $(OBJS)) $(LIBS) -I include/ -o $(NAME) -g
 
 all: $(NAME)
 

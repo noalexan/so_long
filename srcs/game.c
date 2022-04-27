@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:52:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 17:06:59 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/27 10:24:11 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	ft_key_event(int key, t_window *window)
 
 void	init_player(t_window *window)
 {
-	window->player.x = 16;
-	window->player.y = 32;
+	window->player.x = window->game.maps[window->game.current_level].x_pos;
+	window->player.y = window->game.maps[window->game.current_level].y_pos;
 	window->player.sprites.north = mlx_xpm_file_to_image(window->mlx,
 			window->settings.player[0], &window->player.width,
 			&window->player.height);

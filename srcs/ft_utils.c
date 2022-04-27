@@ -6,11 +6,18 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 17:08:56 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 15:49:08 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/27 14:58:53 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+int	special_char(t_window *window, char res)
+{
+	if (res == 'E')
+		end_of_level(window);
+	return (0);
+}
 
 int	its_a_wall(t_window *window)
 {
@@ -30,31 +37,68 @@ int	its_a_wall(t_window *window)
 		res = window->game.maps[window->game.current_level].board[window->player
 			.y / 16 - 1][window->player.x / 16 + 1];
 	if (res == 'P' || res == 'C' || res == 'E')
-		return (0);
+		return (special_char(window, res));
 	return (res - '0');
 }
 
-		// if ((window->player.sprites.facing == 'N' && window->game
-		// 	.maps[window->game.current_level]
-		// 	.board[window->player.y / 16 + 1][window->player.x / 16] == 1)
-		// || (window->player.sprites.facing == 'S' && window->game
-		// 	.maps[window->game.current_level]
-		// 	.board[window->player.y / 16 - 1][window->player.x / 16] == 1)
-		// || (window->player.sprites.facing == 'W' && window->game
-		// 	.maps[window->game.current_level]
-		// 	.board[window->player.y / 16][window->player.x / 16 - 1] == 1)
-		// || (window->player.sprites.facing == 'E' && window->game
-		// 	.maps[window->game.current_level]
-		// 	.board[window->player.y / 16][window->player.x / 16 + 1] == 1))
-		// return (1);
+void	map_spawn_is_valid(t_window *window, int i)
+{
+	int	x;
+	int	y;
+	int	p;
 
-	// if ((window->player.sprites.facing == 'W'
-	// 		&& window->player.x - window->settings.speed <= 16)
-	// 	|| (window->player.sprites.facing == 'N'
-	// 		&& window->player.y - window->settings.speed < 16)
-	// 	|| (window->player.sprites.facing == 'E'
-	// 		&& window->player.x + window->settings.speed + 16
-	// 		> window->game.maps[window->game.current_level].width)
-	// 	|| (window->player.sprites.facing == 'S'
-	// 		&& window->player.y + window->settings.speed + 16
-	// 		> window->game.maps[window->game.current_level].heigth))
+	y = -1;
+	p = 0;
+	while (window->game.maps[i].board[++y])
+	{
+		x = -1;
+		while (window->game.maps[i].board[y][++x])
+		{
+			if (window->game.maps[i]
+				.board[y][x] == 'P')
+			{
+				window->game.maps[i].x_pos = x * 16;
+				window->game.maps[i].y_pos = y * 16 + 16;
+				p++;
+			}
+		}
+	}
+	if (p != 1)
+		err("le spawn de la map '%s' est invalide.", window->game
+			.maps[i].level_name);
+}
+
+void	map_exit_is_valid(t_window *window, int i)
+{
+	int	x;
+	int	y;
+	int	e;
+
+	y = -1;
+	e = 0;
+	while (window->game.maps[i].board[++y])
+	{
+		x = -1;
+		while (window->game.maps[i].board[y][++x])
+		{
+			if (window->game.maps[i]
+				.board[y][x] == 'E')
+				e++;
+		}
+	}
+	if (e < 1)
+		err("la map '%s' ne presente aucune sortie.", window->game
+			.maps[i].level_name);
+}
+
+void	map_is_valid(t_window *window)
+{
+	int	i;
+
+	i = -1;
+	while (++i < window->game.level)
+	{
+		map_spawn_is_valid(window, i);
+		map_exit_is_valid(window, i);
+	}
+}
