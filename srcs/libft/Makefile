@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/26 13:42:08 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/28 10:09:34 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS	:=	ft_atoi.c \
 			ft_strtrim.c \
 			ft_split.c \
 			ft_itoa.c \
+			ft_swap.c \
 			ft_strmapi.c \
 			ft_striteri.c \
 			ft_putchar_fd.c \
