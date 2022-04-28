@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:06:58 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/27 14:55:39 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 09:59:49 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,15 @@ void	init_map(t_window *window, char **levels)
 	size = size_of_tab((void *) levels);
 	if (size < 1)
 		err("veuillez entrer une ou plusieurs maps en argument.");
-	window->game.level = size;
-	window->game.current_level = -1;
-	window->game.maps = ft_calloc(size, sizeof(t_map));
-	i = -1;
 	if (!ft_strcmp(levels[size - 1], "--nogui"))
 	{
 		window->settings.nogui = 1;
 		size--;
 	}
+	window->game.level = size;
+	window->game.current_level = -1;
+	window->game.maps = ft_calloc(size, sizeof(t_map));
+	i = -1;
 	while (++i < size)
 		parse_map(window, levels[i], i);
 	map_is_valid(window);
