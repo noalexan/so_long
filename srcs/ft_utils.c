@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 17:08:56 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/27 14:58:53 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 09:46:59 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int	special_char(t_window *window, char res)
 {
 	if (res == 'E')
+	{
 		end_of_level(window);
+		return (1);
+	}
 	return (0);
 }
 

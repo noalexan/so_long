@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/27 14:36:49 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/28 09:54:14 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ NAME	:= so_long
 SRCS	:=	srcs/main.c \
 			srcs/settings.c \
 			srcs/game.c \
+			srcs/nogui.c \
 			srcs/ft_puts.c \
 			srcs/ft_utils.c \
 			srcs/map.c \

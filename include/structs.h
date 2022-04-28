@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/27 10:57:53 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 09:48:55 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ typedef struct s_sprites
 	char	facing;
 }			t_sprites;
 
+typedef struct s_color
+{
+	char	*wall;
+	char	*floor;
+	char	*player;
+	char	*ennemies;
+	char	*exit;
+	char	*weapons;
+	char	*collectibles;
+	char	*reset;
+	char	*vide;
+}			t_color;
+
 typedef struct s_settings
 {
 	int		max_lives;
@@ -31,6 +44,7 @@ typedef struct s_settings
 	int		gameover_title_color;
 	int		success_title_color;
 	int		nogui;
+	t_color	nogui_color;
 	char	*dir_path;
 	char	*window_title;
 	char	*floor;

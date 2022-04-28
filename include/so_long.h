@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:17:15 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/27 11:04:14 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 09:54:36 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,15 @@
 # include "ft_printf.h"
 # include "libft.h"
 
-# define RED_BLOCK_CONSOLE "\033[41m"
-# define RESET_CONSOLE_COLOR "\033[0m"
+# define RED_BLOCK_CONSOLE    "\033[41m  \033[0m"
+# define GREEN_BLOCK_CONSOLE  "\033[42m  \033[0m"
+# define YELLOW_BLOCK_CONSOLE "\033[43m  \033[0m"
+# define BLUE_BLOCK_CONSOLE   "\033[44m  \033[0m"
+# define PINK_BLOCK_CONSOLE   "\033[45m  \033[0m"
+# define CYAN_BLOCK_CONSOLE   "\033[46m  \033[0m"
+# define GREY_BLOCK_CONSOLE   "\033[47m  \033[0m"
+# define RESET_CONSOLE_COLOR  "\033[0m"
+# define VOID_BLOCK_CONSOLE   "  "
 
 # define RED 0xFF1A2D
 # define GREEN 0x63F542
@@ -39,6 +46,7 @@
 void	settings(t_window *window);
 void	init_game(t_window *window);
 void	stats(t_window *window);
+void	print_nogui_map(t_window *window);
 
 void	end_of_level(t_window *window);
 int		ft_destroy_win(t_window *window);

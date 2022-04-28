@@ -6,11 +6,20 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/27 10:58:26 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 09:52:52 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	settings_nogui(t_window *window)
+{
+	window->settings.nogui_color.wall = RED_BLOCK_CONSOLE;
+	window->settings.nogui_color.floor = GREY_BLOCK_CONSOLE;
+	window->settings.nogui_color.collectibles = YELLOW_BLOCK_CONSOLE;
+	window->settings.nogui_color.exit = PINK_BLOCK_CONSOLE;
+	window->settings.nogui_color.player = BLUE_BLOCK_CONSOLE;
+}
 
 void	settings_string(t_window *window)
 {
@@ -46,9 +55,10 @@ void	settings(t_window *window)
 	window->settings.level_title_color = RED;
 	window->settings.gameover_title_color = RED;
 	window->settings.success_title_color = GREEN;
-	window->settings.nogui = 0;
+	window->settings.nogui = 1;
 	window->settings.window_title = "So Long";
 	settings_string(window);
+	settings_nogui(window);
 }
 
 void	stats(t_window *window)
@@ -60,5 +70,7 @@ void	stats(t_window *window)
 	ft_printf("Level      : %d\n", window->game.current_level + 1);
 	ft_printf("Lives      : %d\n", window->player.lives);
 	ft_printf("Position X : %d\n", window->player.x);
-	ft_printf("Position Y : %d\n", window->player.y);
+	ft_printf("Position Y : %d\n\n", window->player.y);
+	if (!window->settings.nogui)
+		print_nogui_map(window);
 }
