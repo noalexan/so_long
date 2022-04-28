@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:18:08 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/27 09:10:38 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 10:19:27 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	door(t_window *win)
 	int		w;
 	int		h;
 
-	if (!win->game.exit)
+	if (!win->game.maps[win->game.current_level].exit)
 		img = mlx_xpm_file_to_image(win->mlx, win->settings.door[1], &w, &h);
 	else
 		img = mlx_xpm_file_to_image(win->mlx, win->settings.door[0], &w, &h);
@@ -35,7 +35,7 @@ void	door(t_window *win)
 	}
 }
 
-void	put_walls(t_window *window)
+void	put_walls(t_window *win)
 {
 	void	*img;
 	int		x;
@@ -43,15 +43,14 @@ void	put_walls(t_window *window)
 	int		w;
 	int		h;
 
-	img = mlx_xpm_file_to_image(window->mlx, window->settings.wall, &w, &h);
+	img = mlx_xpm_file_to_image(win->mlx, win->settings.wall, &w, &h);
 	y = -1;
-	while (window->game.maps[window->game.current_level].board[++y])
+	while (win->game.maps[win->game.current_level].board[++y])
 	{
 		x = -1;
-		while (window->game.maps[window->game.current_level].board[y][++x])
-			if (window->game.maps[window->game.current_level]
-				.board[y][x] == '1')
-				mlx_put_image_to_window(window->mlx, window->win, img,
+		while (win->game.maps[win->game.current_level].board[y][++x])
+			if (win->game.maps[win->game.current_level].board[y][x] == '1')
+				mlx_put_image_to_window(win->mlx, win->win, img,
 					x * 16 - 7, y * 16 + 10);
 	}
 }
@@ -59,5 +58,7 @@ void	put_walls(t_window *window)
 void	place_objects(t_window *window)
 {
 	put_walls(window);
+	ft_printf("WALL OK\n");
 	door(window);
+	ft_printf("DOOR OK\n");
 }

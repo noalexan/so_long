@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 09:48:55 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 10:15:12 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_map
 	int		heigth;
 	int		x_pos;
 	int		y_pos;
+	int		exit;
 	char	**board;
 }			t_map;
 
@@ -89,7 +90,6 @@ typedef struct s_game
 {
 	int		level;
 	int		current_level;
-	int		exit;
 	t_map	*maps;
 }			t_game;
 
