@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:17:15 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 12:56:27 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 14:07:11 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ft_fill_floor(t_window *window);
 void	place_objects(t_window *window);
 void	ft_move(char facing, t_window *window);
 int		animate(t_window *window);
+void	print_level(t_window *window);
 
 /* ################# UTILS ################ */
 int		ft_size_of_tab(char **tab);

@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 13:41:58 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 14:12:55 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_map
 	int		x_pos;
 	int		y_pos;
 	int		exit;
+	int		nb_of_ennemies;
 	char	**board;
 }			t_map;
 

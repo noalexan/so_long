@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:20:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 13:58:17 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 14:23:29 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ void	animate_collectibles(t_window *window, int *c)
 void	animate_ennemies(t_window *window, int *e)
 {
 	int	d;
-	int	i;
+	// int	i;
 
 	if (*e / window->settings.ennemies_frame_speed == 1
 		&& *e % window->settings.ennemies_frame_speed == 0)
 	{
-		i = -1;
-		while (window->game.maps[++i])
-		{
+		// i = -1;
+		// while (window->game.maps[++i])
+		// {
 			d = rand() % 4;
 			ft_printf("%d", d);
-		}
+		// }
 		*e = 0;
 	}
 }
