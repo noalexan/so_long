@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 17:08:56 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 11:35:28 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 12:53:39 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ int	special_char(t_window *window, char res)
 {
 	if (res == 'E')
 	{
-		end_of_level(window);
+		if (!window->game.maps[window->game.current_level].exit)
+			end_of_level(window);
 		return (1);
 	}
+	else if (res == 'C')
+		window->game.maps[window->game.current_level].exit--;
 	return (0);
 }
 

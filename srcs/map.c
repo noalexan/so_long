@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:06:58 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 10:15:47 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 13:05:42 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	parse_map(t_window *window, char *level_name, int level_num)
 		err("la map '%s' est invalide.", level_name);
 	if (ft_strcmp(".ber", level_name + (ft_strlen(level_name) - 4)) != 0)
 		err("la map '%s' n'est pas un fichier ber.", level_name);
-	window->game.maps[level_num].exit = 0;
 	window->game.maps[level_num].heigth = size * 16;
 	window->game.maps[level_num].width = size_l * 16;
 	window->game.maps[level_num].level_name = level_name;
@@ -87,6 +86,7 @@ void	parse_map(t_window *window, char *level_name, int level_num)
 	while (++i < size)
 		window->game.maps[level_num].board[i] = get_next_line(fd);
 	close(fd);
+	set_exit(window, level_num);
 }
 
 void	init_map(t_window *window, char **levels)

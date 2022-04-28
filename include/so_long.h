@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:17:15 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 12:22:22 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 12:56:27 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	settings(t_window *window);
 void	init_game(t_window *window);
 void	stats(t_window *window);
 void	print_nogui_map(t_window *window);
+void	set_exit(t_window *window, int i);
 
 void	end_of_level(t_window *window);
 int		ft_destroy_win(t_window *window);
