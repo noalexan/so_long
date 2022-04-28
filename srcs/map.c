@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:06:58 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 09:59:49 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 10:03:13 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	init_map(t_window *window, char **levels)
 		err("veuillez entrer une ou plusieurs maps en argument.");
 	if (!ft_strcmp(levels[size - 1], "--nogui"))
 	{
-		window->settings.nogui = 1;
+		window->settings.nogui = 0;
 		size--;
 	}
 	window->game.level = size;

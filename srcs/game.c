@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:52:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/27 10:24:11 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 10:02:42 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,10 @@ void	init_game(t_window *window)
 	if (window->game.current_level >= window->game.level)
 		exit(EXIT_SUCCESS);
 	window->win = mlx_new_window(window->mlx,
-			window->game.maps[window->game.current_level].width,
-			window->game.maps[window->game.current_level].heigth + 20,
+			window->game.maps[window->game.current_level].width
+			* window->settings.nogui,
+			window->game.maps[window->game.current_level].heigth + 20
+			* window->settings.nogui,
 			window->settings.window_title);
 	ft_fill_floor(window);
 	place_objects(window);
