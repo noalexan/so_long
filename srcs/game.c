@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:52:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 14:07:34 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 14:38:14 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,8 @@ int	ft_key_event(int key, t_window *window)
 		ft_move('E', window);
 	else
 		return (0);
-	mlx_clear_window(window->mlx, window->win);
-	ft_fill_floor(window);
-	place_objects(window);
-	ft_put_player(window);
-	print_level(window);
-	ft_put_health(window);
-	stats(window);
+	// print_map(window);
+	// collectibles(window, 0);
 	return (0);
 }
 
@@ -78,13 +73,9 @@ void	init_game(t_window *window)
 			window->game.maps[window->game.current_level].heigth + 20
 			* window->settings.nogui,
 			window->settings.window_title);
-	ft_fill_floor(window);
-	place_objects(window);
 	init_player(window);
-	ft_put_health(window);
-	print_level(window);
+	print_map(window);
 	mlx_hook(window->win, 2, 1L << 2, ft_key_event, window);
 	mlx_hook(window->win, 17, 1L << 2, ft_destroy_win, window);
 	mlx_loop_hook(window->mlx, animate, window);
-	stats(window);
 }

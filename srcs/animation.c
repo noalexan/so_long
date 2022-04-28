@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:20:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 14:23:29 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 14:38:45 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	collectibles(t_window *win, int i)
 	int		w;
 	int		h;
 
+	print_map(win);
 	img = mlx_xpm_file_to_image(win->mlx, win->settings.collectibles[i],
 			&w, &h);
 	y = -1;
@@ -29,7 +30,7 @@ void	collectibles(t_window *win, int i)
 		while (win->game.maps[win->game.current_level].board[y][++x])
 			if (win->game.maps[win->game.current_level].board[y][x] == 'C')
 				mlx_put_image_to_window(win->mlx, win->win, img,
-					x * 16 + 1, y * 16 + 19);
+					x * 16, y * 16 + 19);
 	}
 }
 
