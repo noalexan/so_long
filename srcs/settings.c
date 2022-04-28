@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 12:42:41 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 13:54:16 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	settings(t_window *window)
 	window->settings.max_lives = 3;
 	window->settings.live_regain = 1;
 	window->settings.speed = 16;
-	window->settings.frame_speed = 4;
+	window->settings.collectibles_frame_speed = 1024;
+	window->settings.ennemies_frame_speed = 1024;
 	window->settings.level_title_color = RED;
 	window->settings.gameover_title_color = RED;
 	window->settings.success_title_color = GREEN;
@@ -86,6 +87,10 @@ void	stats(t_window *window)
 		window->game.maps[window->game.current_level].level_name);
 	ft_printf("Level      : %d\n", window->game.current_level + 1);
 	ft_printf("Lives      : %d\n", window->player.lives);
+	if (window->player.armed)
+		ft_printf("Armed      : Yes\n");
+	else
+		ft_printf("Armed      : No\n");
 	ft_printf("Position X : %d\n", window->player.x);
 	ft_printf("Position Y : %d\n\n", window->player.y);
 	if (!window->settings.nogui)

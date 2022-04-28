@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 17:08:56 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 12:53:39 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 13:52:22 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	special_char(t_window *window, char res)
 	}
 	else if (res == 'C')
 		window->game.maps[window->game.current_level].exit--;
+	else if (res == 'W')
+		window->player.armed = 1;
 	return (0);
 }
 

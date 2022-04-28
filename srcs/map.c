@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:06:58 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 13:05:42 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 13:53:02 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	init_map(t_window *window, char **levels)
 	int	size;
 	int	i;
 
+	window->player.armed = 0;
 	size = size_of_tab((void *) levels);
 	if (size < 1)
 		err("veuillez entrer une ou plusieurs maps en argument.");

@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:18:08 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 12:12:59 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 13:16:53 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,6 @@ void	door(t_window *win)
 		x = -1;
 		while (win->game.maps[win->game.current_level].board[y][++x])
 			if (win->game.maps[win->game.current_level].board[y][x] == 'E')
-				mlx_put_image_to_window(win->mlx, win->win, img,
-					x * 16 + 1, y * 16 + 19);
-	}
-}
-
-void	collectibles(t_window *win)
-{
-	void	*img;
-	int		x;
-	int		y;
-	int		w;
-	int		h;
-
-	img = mlx_xpm_file_to_image(win->mlx, win->settings.collectibles[0],
-			&w, &h);
-	y = -1;
-	while (win->game.maps[win->game.current_level].board[++y])
-	{
-		x = -1;
-		while (win->game.maps[win->game.current_level].board[y][++x])
-			if (win->game.maps[win->game.current_level].board[y][x] == 'C')
 				mlx_put_image_to_window(win->mlx, win->win, img,
 					x * 16 + 1, y * 16 + 19);
 	}
@@ -100,6 +79,5 @@ void	place_objects(t_window *window)
 {
 	put_walls(window);
 	door(window);
-	collectibles(window);
 	weapons(window);
 }

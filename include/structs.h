@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 12:44:12 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 13:41:58 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ typedef struct s_settings
 	int		max_lives;
 	int		live_regain;
 	int		speed;
-	int		frame_speed;
+	int		collectibles_frame_speed;
+	int		ennemies_frame_speed;
 	int		level_title_color;
 	int		gameover_title_color;
 	int		success_title_color;
@@ -67,13 +68,6 @@ typedef struct s_player
 	int			armed;
 	t_sprites	sprites;
 }			t_player;
-
-typedef struct s_collectibles
-{
-	int	x;
-	int	y;
-	int	taken;
-}			t_collectibles;
 
 typedef struct s_ennemies
 {
@@ -105,7 +99,6 @@ typedef struct s_window
 	void			*win;
 	t_settings		settings;
 	t_ennemies		*ennemies;
-	t_collectibles	*collectibles;
 	t_player		player;
 	t_game			game;
 }			t_window;
