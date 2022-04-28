@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 12:14:19 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 12:42:41 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	settings(t_window *window)
 	window->settings.max_lives = 3;
 	window->settings.live_regain = 1;
 	window->settings.speed = 16;
+	window->settings.frame_speed = 4;
 	window->settings.level_title_color = RED;
 	window->settings.gameover_title_color = RED;
 	window->settings.success_title_color = GREEN;

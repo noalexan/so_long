@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 12:11:17 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 12:44:12 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_settings
 	int		max_lives;
 	int		live_regain;
 	int		speed;
+	int		frame_speed;
 	int		level_title_color;
 	int		gameover_title_color;
 	int		success_title_color;
@@ -69,6 +70,8 @@ typedef struct s_player
 
 typedef struct s_collectibles
 {
+	int	x;
+	int	y;
 	int	taken;
 }			t_collectibles;
 

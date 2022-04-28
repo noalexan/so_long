@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:52:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 10:02:42 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 12:23:02 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ void	init_game(t_window *window)
 	ft_put_health(window);
 	mlx_hook(window->win, 2, 1L << 2, ft_key_event, window);
 	mlx_hook(window->win, 17, 1L << 2, ft_destroy_win, window);
+	mlx_loop_hook(window->mlx, animate, window);
 	stats(window);
 }
