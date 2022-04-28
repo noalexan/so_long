@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 10:15:12 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 12:11:17 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_settings
 	char	*window_title;
 	char	*floor;
 	char	*wall;
+	char	*collectibles[3];
+	char	*weapon[2];
 	char	*player[4];
 	char	*health[2];
 	char	*door[2];
@@ -61,6 +63,7 @@ typedef struct s_player
 	int			width;
 	int			height;
 	int			lives;
+	int			armed;
 	t_sprites	sprites;
 }			t_player;
 

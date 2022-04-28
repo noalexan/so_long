@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:18:08 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 10:19:27 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 12:12:59 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,47 @@ void	door(t_window *win)
 	}
 }
 
+void	collectibles(t_window *win)
+{
+	void	*img;
+	int		x;
+	int		y;
+	int		w;
+	int		h;
+
+	img = mlx_xpm_file_to_image(win->mlx, win->settings.collectibles[0],
+			&w, &h);
+	y = -1;
+	while (win->game.maps[win->game.current_level].board[++y])
+	{
+		x = -1;
+		while (win->game.maps[win->game.current_level].board[y][++x])
+			if (win->game.maps[win->game.current_level].board[y][x] == 'C')
+				mlx_put_image_to_window(win->mlx, win->win, img,
+					x * 16 + 1, y * 16 + 19);
+	}
+}
+
+void	weapons(t_window *win)
+{
+	void	*img;
+	int		x;
+	int		y;
+	int		w;
+	int		h;
+
+	img = mlx_xpm_file_to_image(win->mlx, win->settings.weapon[0], &w, &h);
+	y = -1;
+	while (win->game.maps[win->game.current_level].board[++y])
+	{
+		x = -1;
+		while (win->game.maps[win->game.current_level].board[y][++x])
+			if (win->game.maps[win->game.current_level].board[y][x] == 'W')
+				mlx_put_image_to_window(win->mlx, win->win, img,
+					x * 16 + 1, y * 16 + 19);
+	}
+}
+
 void	put_walls(t_window *win)
 {
 	void	*img;
@@ -58,7 +99,7 @@ void	put_walls(t_window *win)
 void	place_objects(t_window *window)
 {
 	put_walls(window);
-	ft_printf("WALL OK\n");
 	door(window);
-	ft_printf("DOOR OK\n");
+	collectibles(window);
+	weapons(window);
 }
