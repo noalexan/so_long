@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 14:43:18 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:13:41 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	settings_string_2(t_window *window)
 	window->settings.weapon[1] = ft_strjoin(window->settings.dir_path,
 			"lib/sprites/weapons/arrow.xpm");
 	window->settings.collectibles[0] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/collectibles/coin/coin_1.xpm");
+			"lib/sprites/collectibles/coin/1.xpm");
 	window->settings.collectibles[1] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/collectibles/coin/coin_2.xpm");
+			"lib/sprites/collectibles/coin/2.xpm");
 	window->settings.collectibles[2] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/collectibles/coin/coin_3.xpm");
+			"lib/sprites/collectibles/coin/3.xpm");
 }
 
 void	settings_string(t_window *window)
@@ -60,6 +60,14 @@ void	settings_string(t_window *window)
 			"lib/sprites/player/set 2/player_south.xpm");
 	window->settings.player[3] = ft_strjoin(window->settings.dir_path,
 			"lib/sprites/player/set 2/player_west.xpm");
+	window->settings.ennemies[0] = ft_strjoin(window->settings.dir_path,
+			"lib/sprites/ennemies/set 1/ennemies_north.xpm");
+	window->settings.ennemies[1] = ft_strjoin(window->settings.dir_path,
+			"lib/sprites/ennemies/set 1/ennemies_east.xpm");
+	window->settings.ennemies[2] = ft_strjoin(window->settings.dir_path,
+			"lib/sprites/ennemies/set 1/ennemies_south.xpm");
+	window->settings.ennemies[3] = ft_strjoin(window->settings.dir_path,
+			"lib/sprites/ennemies/set 1/ennemies_west.xpm");
 	settings_string_2(window);
 }
 

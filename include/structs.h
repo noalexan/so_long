@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 14:12:55 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:33:41 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_settings
 	char	*collectibles[3];
 	char	*weapon[2];
 	char	*player[4];
+	char	*ennemies[4];
 	char	*health[2];
 	char	*door[2];
 }			t_settings;
@@ -71,20 +72,24 @@ typedef struct s_player
 
 typedef struct s_ennemies
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
+	int			width;
+	int			height;
+	t_sprites	sprites;
 }			t_ennemies;
 
 typedef struct s_map
 {
-	char	*level_name;
-	int		width;
-	int		heigth;
-	int		x_pos;
-	int		y_pos;
-	int		exit;
-	int		nb_of_ennemies;
-	char	**board;
+	char		*level_name;
+	int			width;
+	int			heigth;
+	int			x_pos;
+	int			y_pos;
+	int			exit;
+	int			nb_of_ennemies;
+	t_ennemies	*ennemies;
+	char		**board;
 }			t_map;
 
 typedef struct s_game
@@ -99,7 +104,6 @@ typedef struct s_window
 	void			*mlx;
 	void			*win;
 	t_settings		settings;
-	t_ennemies		*ennemies;
 	t_player		player;
 	t_game			game;
 }			t_window;

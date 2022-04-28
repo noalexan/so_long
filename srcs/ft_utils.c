@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 17:08:56 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 13:52:22 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:30:07 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,11 @@ void	map_exit_is_valid(t_window *window, int i)
 	int	x;
 	int	y;
 	int	e;
+	int	ennemies;
 
 	y = -1;
 	e = 0;
+	ennemies = 0;
 	while (window->game.maps[i].board[++y])
 	{
 		x = -1;
@@ -92,11 +94,15 @@ void	map_exit_is_valid(t_window *window, int i)
 			if (window->game.maps[i]
 				.board[y][x] == 'E')
 				e++;
+			else if (window->game.maps[i]
+				.board[y][x] == 'Q')
+				ennemies++;
 		}
 	}
 	if (e < 1)
 		err("la map '%s' ne presente aucune sortie.", window->game
 			.maps[i].level_name);
+	window->game.maps[i].nb_of_ennemies = ennemies;
 }
 
 void	map_is_valid(t_window *window)

@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/28 14:29:09 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/28 17:10:07 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRCS	:=	srcs/main.c \
 			srcs/ft_utils.c \
 			srcs/map.c \
 			srcs/menu.c \
+			srcs/init.c \
 			srcs/set_exit.c \
+			srcs/ennemies.c \
 			srcs/print_map.c \
 			srcs/animation.c \
 			srcs/place_objects.c \

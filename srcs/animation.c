@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:20:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 14:38:45 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 17:25:07 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	collectibles(t_window *win, int i)
 	int		w;
 	int		h;
 
-	print_map(win);
 	img = mlx_xpm_file_to_image(win->mlx, win->settings.collectibles[i],
 			&w, &h);
 	y = -1;
@@ -52,18 +51,15 @@ void	animate_collectibles(t_window *window, int *c)
 
 void	animate_ennemies(t_window *window, int *e)
 {
-	int	d;
-	// int	i;
+	int	i;
 
 	if (*e / window->settings.ennemies_frame_speed == 1
 		&& *e % window->settings.ennemies_frame_speed == 0)
 	{
-		// i = -1;
-		// while (window->game.maps[++i])
-		// {
-			d = rand() % 4;
-			ft_printf("%d", d);
-		// }
+		i = -1;
+		while (++i < window->game.maps[window->game.current_level]
+			.nb_of_ennemies)
+			ft_move_ennemies(window, i);
 		*e = 0;
 	}
 }

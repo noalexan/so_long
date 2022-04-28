@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:52:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 14:38:14 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 15:54:05 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,47 +35,6 @@ int	ft_key_event(int key, t_window *window)
 		ft_move('E', window);
 	else
 		return (0);
-	// print_map(window);
-	// collectibles(window, 0);
-	return (0);
-}
-
-void	init_player(t_window *window)
-{
-	window->player.x = window->game.maps[window->game.current_level].x_pos;
-	window->player.y = window->game.maps[window->game.current_level].y_pos;
-	window->player.sprites.north = mlx_xpm_file_to_image(window->mlx,
-			window->settings.player[0], &window->player.width,
-			&window->player.height);
-	window->player.sprites.east = mlx_xpm_file_to_image(window->mlx,
-			window->settings.player[1], &window->player.width,
-			&window->player.height);
-	window->player.sprites.south = mlx_xpm_file_to_image(window->mlx,
-			window->settings.player[2], &window->player.width,
-			&window->player.height);
-	window->player.sprites.west = mlx_xpm_file_to_image(window->mlx,
-			window->settings.player[3], &window->player.width,
-			&window->player.height);
-	window->player.sprites.facing = 'S';
-	ft_put_player(window);
-}
-
-void	init_game(t_window *window)
-{
-	window->game.current_level++;
-	if (window->player.lives < window->settings.max_lives)
-		window->player.lives += window->settings.live_regain;
-	if (window->game.current_level >= window->game.level)
-		exit(EXIT_SUCCESS);
-	window->win = mlx_new_window(window->mlx,
-			window->game.maps[window->game.current_level].width
-			* window->settings.nogui,
-			window->game.maps[window->game.current_level].heigth + 20
-			* window->settings.nogui,
-			window->settings.window_title);
-	init_player(window);
 	print_map(window);
-	mlx_hook(window->win, 2, 1L << 2, ft_key_event, window);
-	mlx_hook(window->win, 17, 1L << 2, ft_destroy_win, window);
-	mlx_loop_hook(window->mlx, animate, window);
+	return (0);
 }

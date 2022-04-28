@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:17:15 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 14:30:42 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/28 17:23:48 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	set_exit(t_window *window, int i);
 
 void	end_of_level(t_window *window);
 int		ft_destroy_win(t_window *window);
+int		ft_key_event(int key, t_window *window);
 
 /* ################# PUTS ################# */
 void	ft_put_player(t_window *window);
@@ -58,15 +59,17 @@ void	ft_put_health(t_window *window);
 void	ft_fill_floor(t_window *window);
 void	place_objects(t_window *window);
 void	ft_move(char facing, t_window *window);
+void	ft_move_ennemies(t_window *window, int i);
 int		animate(t_window *window);
 void	print_level(t_window *window);
 void	print_map(t_window *window);
 void	collectibles(t_window *win, int i);
 
 /* ################# UTILS ################ */
-int		ft_size_of_tab(char **tab);
 int		ft_count_line(int fd);
 int		its_a_wall(t_window *window);
+int		size_of_tab(void **tab);
+int		special_char(t_window *window, char res);
 
 /* ################# MAPS ################# */
 void	init_map(t_window *window, char **levels);
