@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:48:12 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 12:18:45 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 12:14:04 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	game_over(t_window *window)
 {
 	if (!window->settings.nogui)
-		ft_printf("\033[31mCongratulation\033[0m\n");
+		ft_printf("\033[31mGame Over\033[0m\n");
 	else
 	{
 		mlx_clear_window(window->mlx, window->win);
@@ -26,7 +26,7 @@ void	game_over(t_window *window)
 				.gameover_title_color), "Game Over");
 	}
 	mlx_destroy_window(window->mlx, window->win);
-	init_game(window);
+	exit(EXIT_SUCCESS);
 }
 
 void	congratulation(t_window *window)

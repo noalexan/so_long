@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 09:53:32 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 11:35:42 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 11:38:20 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	print_nogui_legend(t_window *window)
 {
-	ft_printf("\nPlayer: %s  Collectibles: %s\nExit:   %s  Weapon:       %s\n",
+	ft_printf("\nPlayer:    %s  Collectibles: %s\nExit:      %s",
 		window->settings.nogui_color.player,
 		window->settings.nogui_color.collectibles,
-		window->settings.nogui_color.exit,
-		window->settings.nogui_color.weapons);
+		window->settings.nogui_color.exit);
+	ft_printf("  Weapon:       %s\nEnnemies : %s\n",
+		window->settings.nogui_color.weapons,
+		window->settings.nogui_color.ennemies);
 }
 
 void	print_what_you_want(t_window *window, int i, int j)
@@ -41,6 +43,9 @@ void	print_what_you_want(t_window *window, int i, int j)
 	else if (window->game.maps[window->game.current_level]
 		.board[i][j] == '0')
 		ft_printf(window->settings.nogui_color.floor);
+	else if (window->game.maps[window->game.current_level]
+		.board[i][j] == 'Q')
+		ft_printf(window->settings.nogui_color.ennemies);
 }
 
 void	print_nogui_map(t_window *window)

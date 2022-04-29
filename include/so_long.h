@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:17:15 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 17:23:48 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 12:08:12 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		ft_key_event(int key, t_window *window);
 
 /* ################# PUTS ################# */
 void	ft_put_player(t_window *window);
+void	ft_put_ennemies(t_window *window, int i);
 void	ft_put_health(t_window *window);
 void	ft_fill_floor(t_window *window);
 void	place_objects(t_window *window);
@@ -70,6 +71,8 @@ int		ft_count_line(int fd);
 int		its_a_wall(t_window *window);
 int		size_of_tab(void **tab);
 int		special_char(t_window *window, char res);
+void	map_objs_swap(t_window *window);
+void	map_objs_swap_ennemies(t_window *window, int i);
 
 /* ################# MAPS ################# */
 void	init_map(t_window *window, char **levels);

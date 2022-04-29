@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:35:23 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 16:51:51 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 10:32:06 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,30 +81,6 @@ void	ft_fill_floor(t_window *window)
 		}
 		x += 16;
 	}
-}
-
-void	map_objs_swap(t_window *window)
-{
-	if (window->player.sprites.facing == 'N')
-		ft_swap(&window->game.maps[window->game.current_level]
-			.board[window->player.y / 16 - 1][window->player.x / 16],
-			&window->game.maps[window->game.current_level]
-			.board[window->player.y / 16 - 2][window->player.x / 16]);
-	else if (window->player.sprites.facing == 'S')
-		ft_swap(&window->game.maps[window->game.current_level]
-			.board[window->player.y / 16 - 1][window->player.x / 16],
-			&window->game.maps[window->game.current_level]
-			.board[window->player.y / 16][window->player.x / 16]);
-	else if (window->player.sprites.facing == 'E')
-		ft_swap(&window->game.maps[window->game.current_level]
-			.board[window->player.y / 16 - 1][window->player.x / 16],
-			&window->game.maps[window->game.current_level]
-			.board[window->player.y / 16 - 1][window->player.x / 16 + 1]);
-	else if (window->player.sprites.facing == 'W')
-		ft_swap(&window->game.maps[window->game.current_level]
-			.board[window->player.y / 16 - 1][window->player.x / 16],
-			&window->game.maps[window->game.current_level]
-			.board[window->player.y / 16 - 1][window->player.x / 16 - 1]);
 }
 
 void	ft_move(char facing, t_window *window)

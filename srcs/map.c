@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:06:58 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 15:35:08 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:23:45 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	parse_map(t_window *window, char *level_name, int level_num)
 	int		i;
 
 	i = -1;
+	if (ft_strcmp(".ber", level_name + (ft_strlen(level_name) - 4)) != 0)
+		err("la map '%s' n'est pas un fichier ber.", level_name);
 	fd = open(level_name, O_RDONLY);
 	if (fd < 3)
 		err("impossible d'ouvrir la map '%s'.", level_name);
@@ -77,8 +79,7 @@ void	parse_map(t_window *window, char *level_name, int level_num)
 	size_l = calc_size_of_line(open(level_name, O_RDONLY));
 	if (size_l < 3 || size < 3)
 		err("la map '%s' est invalide.", level_name);
-	if (ft_strcmp(".ber", level_name + (ft_strlen(level_name) - 4)) != 0)
-		err("la map '%s' n'est pas un fichier ber.", level_name);
+	window->game.maps[level_num].count = 0;
 	window->game.maps[level_num].heigth = size * 16;
 	window->game.maps[level_num].width = size_l * 16;
 	window->game.maps[level_num].level_name = level_name;

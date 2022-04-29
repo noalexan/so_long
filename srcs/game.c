@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:52:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 15:54:05 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:32:05 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int	ft_key_event(int key, t_window *window)
 	else
 		return (0);
 	print_map(window);
+	collectibles(window, 0);
 	return (0);
 }

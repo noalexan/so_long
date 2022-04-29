@@ -1,18 +1,18 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    bonus                                              :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/29 14:22:26 by noalexan         ###   ########.fr        #
+#    Updated: 2022/04/29 13:21:07 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		:= gcc
-OFLAGS	:= -Werror -Wextra -Wall
-CFLAGS	:= -I /usr/X11/include -l mlx -framework OpenGL -framework AppKit -g
+OFLAGS	:= -Werror -Wextra -Wall -g
+CFLAGS	:= -I /usr/X11/include -l mlx -framework OpenGL -framework AppKit
 
 NAME	:= so_long
 
@@ -49,7 +49,7 @@ RESET	:= "\033[0m"
 
 .c.o: $(SRCS)
 	@echo $(GREEN)"[Compiling objects... "$(YELLOW)"<$<>"$(GREEN)" ]"$(RESET)
-	@$(CC) $(OFLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) $(OFLAGS) -c $< -o $(<:.c=.o) -g
 
 $(NAME): $(OBJS)
 	@make -C srcs/libft
@@ -57,14 +57,11 @@ $(NAME): $(OBJS)
 	@echo $(CYAN)"[Compiling '$(NAME)'...]"$(RESET)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBS) -I include/ -o $(NAME)
 
-bonus:
-	@make -f bonus
-
 test_parser: fclean $(OBJS)
 	@make -C srcs/libft
 	@make -C srcs/printf
 	@echo $(CYAN)"[Compiling parse test binary file...]"$(RESET)
-	@$(CC) $(CFLAGS) $(subst srcs/main.o, test/test_parser.c, $(OBJS)) $(LIBS) -I include/ -o $(NAME)
+	@$(CC) $(CFLAGS) $(subst srcs/main.o, test/test_parser.c, $(OBJS)) $(LIBS) -I include/ -o $(NAME) -g
 
 all: $(NAME)
 
@@ -74,27 +71,10 @@ clean:
 	@make -C srcs/libft fclean
 	@make -C srcs/printf fclean
 
-clean_bonus:
-	@echo $(CYAN)"[Erasing bonus...]"$(RESET)
-	@make -f bonus clean
-
 fclean: clean
 	@echo $(CYAN)"[Erasing binary file...]"$(RESET)
 	@$(RM) $(NAME) test_parser
 
-fclean_bonus: clean_bonus
-	@echo $(CYAN)"[Force erasing bonus...]"$(RESET)
-	@make -f bonus clean
-
-clean_all: clean clean_bonus
-
-fclean_all: fclean fclean_bonus
-
 re: fclean all
 
-re_bonus: fclean_bonus bonus
-
-norm:
-	@norminette -R CheckForbiddenSourceHeader -R CheckDefine
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

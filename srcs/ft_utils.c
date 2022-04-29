@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 17:08:56 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 16:30:07 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 10:53:45 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int	special_char(t_window *window, char res)
 	{
 		if (!window->game.maps[window->game.current_level].exit)
 			end_of_level(window);
+		return (1);
+	}
+	else if (res == 'Q')
+	{
+		window->player.lives--;
 		return (1);
 	}
 	else if (res == 'C')
@@ -44,7 +49,7 @@ int	its_a_wall(t_window *window)
 	else if (window->player.sprites.facing == 'E')
 		res = window->game.maps[window->game.current_level].board[window->player
 			.y / 16 - 1][window->player.x / 16 + 1];
-	if (res == 'P' || res == 'C' || res == 'E' || res == 'W')
+	if (res == 'P' || res == 'C' || res == 'E' || res == 'W' || res == 'Q')
 		return (special_char(window, res));
 	return (res - '0');
 }

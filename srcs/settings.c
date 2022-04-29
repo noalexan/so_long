@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 16:13:41 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:38:55 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	settings_nogui(t_window *window)
 	window->settings.nogui_color.collectibles = YELLOW_BLOCK_CONSOLE;
 	window->settings.nogui_color.exit = PINK_BLOCK_CONSOLE;
 	window->settings.nogui_color.weapons = CYAN_BLOCK_CONSOLE;
+	window->settings.nogui_color.ennemies = CYAN_BLOCK_CONSOLE;
 	window->settings.nogui_color.player = BLUE_BLOCK_CONSOLE;
 }
 
@@ -37,11 +38,11 @@ void	settings_string_2(t_window *window)
 	window->settings.weapon[1] = ft_strjoin(window->settings.dir_path,
 			"lib/sprites/weapons/arrow.xpm");
 	window->settings.collectibles[0] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/collectibles/coin/1.xpm");
+			"lib/sprites/collectibles/keys/1.xpm");
 	window->settings.collectibles[1] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/collectibles/coin/2.xpm");
+			"lib/sprites/collectibles/keys/2.xpm");
 	window->settings.collectibles[2] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/collectibles/coin/3.xpm");
+			"lib/sprites/collectibles/keys/3.xpm");
 }
 
 void	settings_string(t_window *window)
@@ -79,6 +80,7 @@ void	settings(t_window *window)
 	window->settings.collectibles_frame_speed = 1024;
 	window->settings.ennemies_frame_speed = 8192;
 	window->settings.level_title_color = RED;
+	window->settings.count_color = BLUE;
 	window->settings.gameover_title_color = RED;
 	window->settings.success_title_color = GREEN;
 	window->settings.nogui = 1;

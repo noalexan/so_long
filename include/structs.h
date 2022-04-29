@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:38:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 16:33:41 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:14:27 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_settings
 	int		collectibles_frame_speed;
 	int		ennemies_frame_speed;
 	int		level_title_color;
+	int		count_color;
 	int		gameover_title_color;
 	int		success_title_color;
 	int		nogui;
@@ -88,6 +89,7 @@ typedef struct s_map
 	int			y_pos;
 	int			exit;
 	int			nb_of_ennemies;
+	int			count;
 	t_ennemies	*ennemies;
 	char		**board;
 }			t_map;

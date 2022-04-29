@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:33:54 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 16:54:17 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 12:15:35 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void	init_player(t_window *window)
 	ft_put_player(window);
 }
 
-void	init_ennemie(t_window *win, int i)
+void	init_ennemie(t_window *win, int i, int x, int y)
 {
+	win->game.maps[win->game.current_level].ennemies[i].x = x;
+	win->game.maps[win->game.current_level].ennemies[i].y = y;
 	win->game.maps[win->game.current_level].ennemies[i].sprites.north
 		= mlx_xpm_file_to_image(win->mlx,
 			win->settings.ennemies[0], &win->game.maps[win->game
@@ -61,18 +63,32 @@ void	init_ennemie(t_window *win, int i)
 void	init_ennemies(t_window *win)
 {
 	int	i;
+	int	y;
+	int	x;
 
 	i = 0;
+	y = -1;
 	win->game.maps[win->game.current_level].ennemies = ft_calloc(win->game
 			.maps[win->game.current_level].nb_of_ennemies, sizeof(t_ennemies));
-	while (++i < win->game.maps[win->game.current_level].nb_of_ennemies)
-		init_ennemie(win, i);
+	while (win->game.maps[win->game.current_level].board[++y])
+	{
+		x = -1;
+		while (win->game.maps[win->game.current_level].board[y][++x])
+		{
+			if (win->game.maps[win->game.current_level].board[y][x] == 'Q')
+			{
+				init_ennemie(win, i, x * 16, (y + 1) * 16);
+				i++;
+			}
+		}
+	}
 }
 
 void	init_game(t_window *window)
 {
 	window->game.current_level++;
-	if (window->player.lives < window->settings.max_lives)
+	if (window->player.lives > 0 && window->player.lives < window->settings
+		.max_lives)
 		window->player.lives += window->settings.live_regain;
 	if (window->game.current_level >= window->game.level)
 		exit(EXIT_SUCCESS);
