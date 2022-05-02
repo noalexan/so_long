@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:35:23 by noalexan          #+#    #+#             */
-/*   Updated: 2022/05/02 11:25:27 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 12:43:04 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	ft_put_health(t_window *window)
 	{
 		if (window->player.lives >= i)
 			mlx_put_image_to_window(window->mlx, window->win, red_health,
-				window->game.maps[window->game.current_level].width - 16 * i,
-				2);
+				window->game.maps[window->game.current_level].width
+				- 16 - 16 * i, 2);
 		else
 			mlx_put_image_to_window(window->mlx, window->win, lost_health,
-				window->game.maps[window->game.current_level].width - 16 * i,
-				2);
+				window->game.maps[window->game.current_level].width
+				- 16 - 16 * i, 2);
 	}
 	if (window->player.lives < 1)
 		end_of_level(window);

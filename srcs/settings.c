@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/05/02 11:27:56 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 12:46:51 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,13 @@ void	settings_string_2(t_window *window)
 	window->settings.weapon[0] = ft_strjoin(window->settings.dir_path,
 			"lib/sprites/weapons/bow.xpm");
 	window->settings.weapon[1] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/weapons/arrow.xpm");
+			"lib/sprites/weapons/arrow/arrow_north.xpm");
+	window->settings.weapon[2] = ft_strjoin(window->settings.dir_path,
+			"lib/sprites/weapons/arrow/arrow_east.xpm");
+	window->settings.weapon[3] = ft_strjoin(window->settings.dir_path,
+			"lib/sprites/weapons/arrow/arrow_south.xpm");
+	window->settings.weapon[4] = ft_strjoin(window->settings.dir_path,
+			"lib/sprites/weapons/arrow/arrow_west.xpm");
 	window->settings.collectibles[0] = ft_strjoin(window->settings.dir_path,
 			"lib/sprites/collectibles/keys/1.xpm");
 	window->settings.collectibles[1] = ft_strjoin(window->settings.dir_path,
@@ -48,7 +54,7 @@ void	settings_string_2(t_window *window)
 void	settings_string(t_window *window)
 {
 	window->settings.dir_path
-		= "/Users/noalexan/Desktop/Projets42/42cursus/so_long/";
+		= DIR;
 	window->settings.floor = ft_strjoin(window->settings.dir_path,
 			"lib/sprites/wooden.xpm");
 	window->settings.wall = ft_strjoin(window->settings.dir_path,

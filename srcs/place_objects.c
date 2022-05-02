@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:18:08 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/28 13:16:53 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 12:38:51 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	door(t_window *win)
 	}
 }
 
-void	weapons(t_window *win)
+void	place_weapons(t_window *win)
 {
 	void	*img;
 	int		x;
@@ -79,5 +79,5 @@ void	place_objects(t_window *window)
 {
 	put_walls(window);
 	door(window);
-	weapons(window);
+	place_weapons(window);
 }

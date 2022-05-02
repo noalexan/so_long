@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:52:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/05/02 11:24:54 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:46:45 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	ft_key_event(int key, t_window *window)
 	if (key == 53)
 		ft_destroy_win(window);
 	else if (key == 49)
-		window->player.lives--;
+	{
+		weapons(window);
+		return (0);
+	}
 	else if (key == 13 || key == 126)
 		ft_move('N', window);
 	else if (key == 0 || key == 123)

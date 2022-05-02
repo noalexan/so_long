@@ -6,13 +6,13 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/05/02 09:37:35 by noalexan         ###   ########.fr        #
+#    Updated: 2022/05/02 12:37:55 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		:= gcc
 OFLAGS	:= -Werror -Wextra -Wall
-CFLAGS	:= -I /usr/X11/include -l mlx -framework OpenGL -framework AppKit -g
+CFLAGS	:= -I /usr/X11/include -l mlx -framework OpenGL -framework AppKit
 
 NAME	:= so_long
 
@@ -23,6 +23,7 @@ SRCS	:=	srcs/map.c \
 			srcs/swap.c \
 			srcs/game.c \
 			srcs/nogui.c \
+			srcs/weapons.c \
 			srcs/ft_puts.c \
 			srcs/ft_utils.c \
 			srcs/settings.c \
@@ -48,9 +49,11 @@ CYAN	:= "\033[0;36m"
 YELLOW	:= "\033[0;33m"
 RESET	:= "\033[0m"
 
+DIR		:= "\"$(shell pwd)/\""
+
 .c.o: $(SRCS)
 	@echo $(GREEN)"[Compiling objects... "$(YELLOW)"<$<>"$(GREEN)" ]"$(RESET)
-	@$(CC) $(OFLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) $(OFLAGS) -D DIR=$(DIR) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
 	@make -C srcs/libft

@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:20:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/29 12:07:53 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:55:12 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	animate(t_window *window)
 	static int	ennemies = 0;
 
 	animate_collectibles(window, &collectibles);
-	animate_ennemies(window, &ennemies);
+	// animate_ennemies(window, &ennemies);
 	collectibles++;
 	ennemies++;
 	return (0);

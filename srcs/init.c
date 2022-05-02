@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:33:54 by noalexan          #+#    #+#             */
-/*   Updated: 2022/05/02 11:22:44 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:12:42 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	init_game(t_window *window)
 			window->settings.window_title);
 	init_player(window);
 	init_ennemies(window);
+	init_arrow(window);
 	print_map(window);
 	mlx_hook(window->win, 2, 1L << 2, ft_key_event, window);
 	mlx_hook(window->win, 17, 1L << 2, ft_destroy_win, window);
