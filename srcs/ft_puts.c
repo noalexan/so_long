@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:35:23 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/29 10:32:06 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 11:25:27 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	ft_move(char facing, t_window *window)
 	window->player.sprites.facing = facing;
 	if (!its_a_wall(window))
 	{
+		window->game.maps[window->game.current_level].count++;
 		map_objs_swap(window);
 		if (facing == 'N')
 			window->player.y -= window->settings.speed;

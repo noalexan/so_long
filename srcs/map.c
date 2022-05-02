@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:06:58 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/29 14:23:45 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 09:35:32 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,5 @@ void	parse_map(t_window *window, char *level_name, int level_num)
 	while (++i < size)
 		window->game.maps[level_num].board[i] = get_next_line(fd);
 	close(fd);
-	set_exit(window, level_num);
+	parse_wall(window, level_num);
 }

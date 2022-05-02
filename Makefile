@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/04/29 14:22:26 by noalexan         ###   ########.fr        #
+#    Updated: 2022/05/02 09:37:35 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,20 +16,21 @@ CFLAGS	:= -I /usr/X11/include -l mlx -framework OpenGL -framework AppKit -g
 
 NAME	:= so_long
 
-SRCS	:=	srcs/main.c \
-			srcs/settings.c \
+SRCS	:=	srcs/map.c \
+			srcs/main.c \
+			srcs/menu.c \
+			srcs/init.c \
+			srcs/swap.c \
 			srcs/game.c \
 			srcs/nogui.c \
 			srcs/ft_puts.c \
 			srcs/ft_utils.c \
-			srcs/map.c \
-			srcs/menu.c \
-			srcs/init.c \
-			srcs/swap.c \
+			srcs/settings.c \
 			srcs/set_exit.c \
 			srcs/ennemies.c \
 			srcs/print_map.c \
 			srcs/animation.c \
+			srcs/parse_wall.c \
 			srcs/place_objects.c \
 			srcs/get_next_line/get_next_line.c \
 			srcs/get_next_line/get_next_line_utils.c \

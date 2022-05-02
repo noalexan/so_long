@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:17:15 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/29 12:08:12 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 09:36:07 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_move(char facing, t_window *window);
 void	ft_move_ennemies(t_window *window, int i);
 int		animate(t_window *window);
 void	print_level(t_window *window);
+void	print_count(t_window *window);
 void	print_map(t_window *window);
 void	collectibles(t_window *win, int i);
 
@@ -78,5 +79,6 @@ void	map_objs_swap_ennemies(t_window *window, int i);
 void	init_map(t_window *window, char **levels);
 void	parse_map(t_window *window, char *level_name, int number_of_level);
 void	map_is_valid(t_window *window);
+void	parse_wall(t_window *window, int level_num);
 
 #endif

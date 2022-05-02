@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 12:07:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/26 15:58:15 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 10:23:51 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*get_line(char **save)
 	pos = there_is_a_end_of_line(*save);
 	if (pos == -1)
 		pos = ft_strlen(*save) - 1;
-	result = ft_substr_gnl(*save, 0, pos - 1);
+	result = ft_substr_gnl(*save, 0, pos);
 	new = ft_substr_gnl(*save, pos + 1, ft_strlen(*save) - 1);
 	free(*save);
 	*save = new;

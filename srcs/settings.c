@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/29 14:38:55 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/02 11:27:56 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	settings_nogui(t_window *window)
 	window->settings.nogui_color.floor = GREY_BLOCK_CONSOLE;
 	window->settings.nogui_color.collectibles = YELLOW_BLOCK_CONSOLE;
 	window->settings.nogui_color.exit = PINK_BLOCK_CONSOLE;
-	window->settings.nogui_color.weapons = CYAN_BLOCK_CONSOLE;
+	window->settings.nogui_color.weapons = GREEN_BLOCK_CONSOLE;
 	window->settings.nogui_color.ennemies = CYAN_BLOCK_CONSOLE;
 	window->settings.nogui_color.player = BLUE_BLOCK_CONSOLE;
 }
@@ -102,7 +102,9 @@ void	stats(t_window *window)
 	else
 		ft_printf("Armed      : No\n");
 	ft_printf("Position X : %d\n", window->player.x);
-	ft_printf("Position Y : %d\n\n", window->player.y);
+	ft_printf("Position Y : %d\n", window->player.y);
+	ft_printf("Mouvements : %d\n\n", window->game
+		.maps[window->game.current_level].count);
 	if (!window->settings.nogui)
 		print_nogui_map(window);
 }
