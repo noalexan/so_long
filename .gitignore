@@ -1,5 +1,6 @@
 .DS_Store
 .vscode
+ForMac
 a.out
 *.o
 *.a

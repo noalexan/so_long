@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:26:53 by noalexan          #+#    #+#             */
-/*   Updated: 2022/04/29 14:53:37 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/03 09:07:08 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	print_level(t_window *window)
 	int		w;
 	int		h;
 
-	im = mlx_xpm_file_to_image(window->mlx, window->settings.weapon[0], &w, &h);
 	nb = ft_itoa(window->game.current_level + 1);
 	level = ft_strjoin("Level ", nb);
 	free(nb);
@@ -57,10 +56,8 @@ void	print_level(t_window *window)
 		mlx_get_color_value(window->mlx, window->settings.level_title_color),
 		level);
 	free(level);
-	if (window->player.armed)
-		mlx_put_image_to_window(window->mlx, window->win, im, 75, 2);
 	im = mlx_xpm_file_to_image(window->mlx, window->settings.collectibles[0],
 			&w, &h);
 	if (!window->game.maps[window->game.current_level].exit)
-		mlx_put_image_to_window(window->mlx, window->win, im, 91, 2);
+		mlx_put_image_to_window(window->mlx, window->win, im, 75, 2);
 }

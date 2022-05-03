@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:27:34 by noalexan          #+#    #+#             */
-/*   Updated: 2022/05/02 12:46:51 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/05/03 09:00:48 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	settings_nogui(t_window *window)
 	window->settings.nogui_color.floor = GREY_BLOCK_CONSOLE;
 	window->settings.nogui_color.collectibles = YELLOW_BLOCK_CONSOLE;
 	window->settings.nogui_color.exit = PINK_BLOCK_CONSOLE;
-	window->settings.nogui_color.weapons = GREEN_BLOCK_CONSOLE;
 	window->settings.nogui_color.ennemies = CYAN_BLOCK_CONSOLE;
 	window->settings.nogui_color.player = BLUE_BLOCK_CONSOLE;
 }
@@ -33,16 +32,6 @@ void	settings_string_2(t_window *window)
 			"lib/sprites/doors/close.xpm");
 	window->settings.door[1] = ft_strjoin(window->settings.dir_path,
 			"lib/sprites/doors/open.xpm");
-	window->settings.weapon[0] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/weapons/bow.xpm");
-	window->settings.weapon[1] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/weapons/arrow/arrow_north.xpm");
-	window->settings.weapon[2] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/weapons/arrow/arrow_east.xpm");
-	window->settings.weapon[3] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/weapons/arrow/arrow_south.xpm");
-	window->settings.weapon[4] = ft_strjoin(window->settings.dir_path,
-			"lib/sprites/weapons/arrow/arrow_west.xpm");
 	window->settings.collectibles[0] = ft_strjoin(window->settings.dir_path,
 			"lib/sprites/collectibles/keys/1.xpm");
 	window->settings.collectibles[1] = ft_strjoin(window->settings.dir_path,
@@ -103,10 +92,6 @@ void	stats(t_window *window)
 		window->game.maps[window->game.current_level].level_name);
 	ft_printf("Level      : %d\n", window->game.current_level + 1);
 	ft_printf("Lives      : %d\n", window->player.lives);
-	if (window->player.armed)
-		ft_printf("Armed      : Yes\n");
-	else
-		ft_printf("Armed      : No\n");
 	ft_printf("Position X : %d\n", window->player.x);
 	ft_printf("Position Y : %d\n", window->player.y);
 	ft_printf("Mouvements : %d\n\n", window->game

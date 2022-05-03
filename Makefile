@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/05/02 12:37:55 by noalexan         ###   ########.fr        #
+#    Updated: 2022/05/03 08:49:18 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SRCS	:=	srcs/map.c \
 			srcs/swap.c \
 			srcs/game.c \
 			srcs/nogui.c \
-			srcs/weapons.c \
 			srcs/ft_puts.c \
 			srcs/ft_utils.c \
 			srcs/settings.c \
